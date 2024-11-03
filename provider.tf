@@ -1,16 +1,14 @@
-# configure aws provider
+# Configure AWS provider with region variable
 provider "aws" {
-  region  = var.region
-  profile = "dhsoni"
+  region     = var.region
 }
 
-# configure backend
+# Configure S3 backend for Terraform state management
 terraform {
   backend "s3" {
-    bucket         = "dhsoni-terraform"
+    bucket         = "cms-terraform-jha"
     key            = "terraform.tfstate"
-    region         = "us-east-2"
-    profile        = "dhsoni"
-    dynamodb_table = "terraform-state-lock-dynamodb"
+    region         = "us-east-1"
+    dynamodb_table = "cms-jha-terraform-state-lock-dynamodb"
   }
 }
